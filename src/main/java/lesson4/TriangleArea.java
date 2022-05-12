@@ -2,21 +2,27 @@ package lesson4;
 
 public class TriangleArea {
 
-    private double a;
-    private double b;
-    private int alpha;
+    private int a;
+    private int b;
+    private int c;
 
-    public TriangleArea(double a, double b, int alpha) {
+    public TriangleArea(int a, int b, int c) {
         this.a = a;
         this.b = b;
-        this.alpha = alpha;
+        this.c = c;
     }
 
     public double calcTriangleArea () throws NonExistentTriangle {
-        if (alpha < 1 || alpha > 179 || a <= 0 || b <= 0) {
-            throw new NonExistentTriangle("Некорректно заданы угол или стороны треугольника! Введите корректные данные и повторите попытку");
+        float p;
+        if (c <= 0 || a <= 0 || b <= 0) {
+            throw new NonExistentTriangle("Одна сторона треугольника отрицательная или равна 0!");
         } else {
-        return (0.5 * a * b * (Math.sin(Math.toRadians(alpha))));
+            if ( (a + b) < c || (b + c) < a || (a + c) < b) {
+                throw new NonExistentTriangle("Такого треугольника не существует!");
+            } else {
+                p = ((float) a + b + c) / 2;
+                return (Math.sqrt(p * (p - a) * (p - b) * (p - c)));
+            }
         }
     }
 
@@ -25,13 +31,13 @@ public class TriangleArea {
         return "TriangleArea{" +
                 "a=" + a +
                 ", b=" + b +
-                ", alpha=" + alpha +
+                ", c=" + c +
                 '}';
     }
 
     public static void main(String[] args) throws NonExistentTriangle {
 
-        TriangleArea triangleArea = new TriangleArea(2,5,179);
+        TriangleArea triangleArea = new TriangleArea(25,20,6);
         System.out.println(triangleArea.calcTriangleArea());
     }
 }

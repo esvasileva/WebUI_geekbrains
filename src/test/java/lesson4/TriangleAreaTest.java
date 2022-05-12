@@ -20,14 +20,13 @@ public class TriangleAreaTest {
 
         private static Stream<Arguments> triangleIncorrectDataProvider() {
             return Stream.of(
-                    Arguments.of(new TriangleArea(2, 5, 0)),
-                    Arguments.of(new TriangleArea(2, 5, 180)),
-                    Arguments.of(new TriangleArea(2, 5, -1)),
-                    Arguments.of(new TriangleArea(2, 5, 181)),
-                    Arguments.of(new TriangleArea(0, 5, 90)),
-                    Arguments.of(new TriangleArea(-0.1, 5, 90)),
-                    Arguments.of(new TriangleArea(2, 0, 90)),
-                    Arguments.of(new TriangleArea(2, -0.1, 90))
+                    Arguments.of(new TriangleArea(0, 5, 5)),
+                    Arguments.of(new TriangleArea(5, 0, 5)),
+                    Arguments.of(new TriangleArea(5, 5, 0)),
+                    Arguments.of(new TriangleArea(-1, 5, 5)),
+                    Arguments.of(new TriangleArea(0, -1, 0)),
+                    Arguments.of(new TriangleArea(0, 5, -1)),
+                    Arguments.of(new TriangleArea(56, 5, 5))
             );
         }
 
@@ -41,10 +40,8 @@ public class TriangleAreaTest {
 
         private static Stream<Arguments> triangleDataProvider() {
             return Stream.of(
-                    Arguments.of(new TriangleArea(2, 5, 90), 5.0),
-                    Arguments.of(new TriangleArea(0.1, 0.1, 65), 0.00453153893518325),
-                    Arguments.of(new TriangleArea(2, 5, 1), 0.08726203218641757),
-                    Arguments.of(new TriangleArea(2, 5, 179), 0.08726203218641719)
+                    Arguments.of(new TriangleArea(1, 1, 1), 0.4330127018922193),
+                    Arguments.of(new TriangleArea(25, 20, 6), 36.97887910686315)
             );
         }
         }
